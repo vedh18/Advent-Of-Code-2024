@@ -2,7 +2,7 @@
 ##################################################################
 #                                                                #                       
 #     Advent of Code 2024 - Day 1, Part 1                        #                       
-#     Problem Link: https://adventofcode.com/2024/day/5          #                       
+#     Problem Link: https://adventofcode.com/2024/day/1          #                       
 #                                                                #                       
 ##################################################################
 */
