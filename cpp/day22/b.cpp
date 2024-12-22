@@ -37,7 +37,7 @@ int main() {
         
         vector<ll> v; // Vector to store the first digit of the the first 2000 special numbers for the current input
         
-        v.push_back(fir(x));
+        v.push_back(x%10);
         for (ll i = 0; i<2000; i++){
             ll temp = x * 64;
             x = x ^ temp;
@@ -48,7 +48,7 @@ int main() {
             temp = x * 2048;
             x ^= temp;
             x %= mod;
-            v.push_back(fir(x));
+            v.push_back(x%10);
         }
         vvg.push_back(v);
     }
