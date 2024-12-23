@@ -22,8 +22,10 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr); 
     
-    ll n = 1024;
+    ll n = 1024; // First we only consider the first 1024 bits
     int m = 70;
+
+    // Initializing required grids of size 71 x 71
     int grid[m + 1][m + 1];
     int vis[m + 1][m + 1];
     for (int i = 0; i<m + 1; i++){
@@ -32,13 +34,17 @@ int main() {
             vis[i][j] = 0;
         }
     }
+    
+    // To avoid input parsing, I used {Ctrl-D --> Ctrl-F --> Find all} and replaced the commas with spaces.
 
+    // Filling the grid with obstacles
     while (n--){
         int x, y;
         cin >> x >> y;
         grid[y][x] = 1;
     }
-  
+
+    // Simple bfs with queue containing {dist, {x, y}} to find shortest path to (m, m) from (0,0)
     queue<pair<int, pair<int, int>>> q;
     q.push({0, {0, 0}});
     vis[0][0] = 1;
@@ -48,10 +54,11 @@ int main() {
         int x = q.front().s.f;
         int y = q.front().s.s;
         q.pop();
-        vector<pair<int, int>> v = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
         if (x == m && y == m){
             ans = min(ans, dist);
         }
+        // Storing changes in coordinates possible to iterate through all neighbours easily.
+        vector<pair<int, int>> v = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
         for (auto p : v){
             int dx = p.f;
             int dy = p.s;
@@ -65,6 +72,8 @@ int main() {
             }
         }
     }
+    
     cout << ans << endl;
+    
     return 0;
 }
